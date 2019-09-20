@@ -6,7 +6,8 @@ class Solution {
         for(int i = 1; i < n; i++) {
             for(int j = 0; j < triangle.get(i).size(); j++) {
                 dp[i][j] = Math.min(j > 0 ? dp[i - 1][j - 1] : Integer.MAX_VALUE, 
-                                    j < triangle.get(i - 1).size() ? dp[i - 1][j] : Integer.MAX_VALUE) + triangle.get(i).get(j);
+                                    j < triangle.get(i - 1).size() ? dp[i - 1][j] : Integer.MAX_VALUE) 
+                           + triangle.get(i).get(j);
             }
         }
         int res = Integer.MAX_VALUE;
