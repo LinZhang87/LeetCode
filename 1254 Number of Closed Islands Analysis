@@ -1,0 +1,25 @@
+The problem link is https://leetcode.com/problems/number-of-closed-islands/
+
+Based on the problem description and sample tests, we know that the only islands that are not closed are those 
+with at least one cell on the first or last row, or first or last column. In other word, islands that are not 
+closed must share a boundary with the input grid boundary.
+
+Applying this observation, we derive the following algorithm.
+
+1. Start breath first search on all island cell on the first/last row and column. Mark all these island cells 
+so that they are excluded from closed islands counting. 
+
+2. For each island cell that has not been traversed, it must be part of a closed island. Perform bfs on it, mark all visited
+island cells and increment the answer count by 1.
+
+
+Runtime: 
+Because our bfs method only add island cells to its queue and these cells are marked to avoid being revisited, all cells in
+the input grid are visited a constant number of times, with constant amount of work when visiting each cell. Hence the runtime
+is proportional to the input grid size, O(N * M)
+
+Space:
+Because the solution code marks each visited island cell directly on the input grid, we do not incur extra bookkeeping space.
+The only extra space we use is the queue that stores island cells to visit next. Since we never visit the same island cell
+twice, the maximum space used by this queue is upper bounded by the total number of island cells in the input grid, which is
+O(N * M)
